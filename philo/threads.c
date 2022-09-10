@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 19:29:41 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 22:00:04 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/10 23:33:50 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@ void	sets_fork(t_pthread *philo, int x)
 {
 	if (x == 0)
 	{
-		// if (philo->all->is_dead)
-		// 	return ;
 		pthread_mutex_lock(&philo->all->forks[(philo->i - 1)]);
 		out(philo, "has taken a fork", 1);
-		// if (philo->all->is_dead)
-		// 	return ;
 		pthread_mutex_lock(&philo->all->forks[(philo->i)
 			% philo->all->n_philo]);
 		out(philo, "has taken a fork", 1);
@@ -42,8 +38,12 @@ void	*func(void *ph)
 	philo = ph;
 	if (!(philo->i & 1))
 		ft_usleep(philo->all->t_eat / 2);
-	while (!philo->all->is_dead)
-	{ 
+	while (1)
+	{
+		pthread_mutex_lock(&philo->all->dead);
+		if (philo->all->is_dead)
+			return (NULL);
+		pthread_mutex_unlock(&philo->all->dead);
 		sets_fork(philo, 0);
 		out(philo, "is eating", 1);
 		pthread_mutex_lock(&philo->eat_shield);
@@ -58,17 +58,10 @@ void	*func(void *ph)
 		ft_usleep(philo->all->t_sleep);
 		out(philo, "is thinking", 1);
 	}
-	printf("%d philo out\n", philo->i);
-	return NULL;
 }
 
-void	*judge(t_philo *philo)
+void	*judge(t_philo *philo, int i, int eat_count)
 {
-	int	i;
-	int	eat_count;
-
-	i = 0;
-	eat_count = 0;
 	while (1)
 	{
 		if (i == philo->n_philo)
@@ -86,7 +79,7 @@ void	*judge(t_philo *philo)
 			pthread_mutex_lock(&philo->dead);
 			philo->is_dead = 1;
 			pthread_mutex_unlock(&philo->dead);
-			sleep(2);
+			sleep(1);
 			return (NULL);
 		}
 		pthread_mutex_unlock(&philo->philos[i].time_shield);
@@ -133,6 +126,10 @@ int	n_eat(int *eat_count, t_pthread *philo)
 	if (*eat_count >= philo->all->n_philo)
 	{
 		out(philo, "every philosopher ate minimum amount of meals\n", 0);
+		pthread_mutex_lock(&philo->all->dead);
+		philo->all->is_dead = 1;
+		pthread_mutex_unlock(&philo->all->dead);
+		sleep(1);
 		return (0);
 	}
 	return (1);

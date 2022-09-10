@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:34:17 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 21:44:42 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/10 23:33:33 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <sys/time.h>
-# include <fcntl.h>
 
 typedef struct s_thread
 {
@@ -55,8 +54,8 @@ int			ft_thread(t_philo *philo);
 int			ft_free(t_philo *pilo);
 int			ft_free_error(t_philo *philo, char *s, int i);
 int			n_eat(int *eat_count, t_pthread *philo);
-void		*judge(t_philo *philo);
-void		*func(void *ph);
+int			ft_allocation_util(t_philo *philo);
+void		*judge(t_philo *philo, int i, int eat_count);
 void		check_lamp(int ac, t_philo *philo);
 void		out(t_pthread *philo, char *s, int lamp);
 void		ft_usleep(unsigned long time);

@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:33:53 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 22:01:38 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/10 23:31:43 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (ft_thread(&philo))
 		return (0);
-	judge(&philo);
-	ft_free(&philo);     
+	judge(&philo, 0, 0);
+	ft_free(&philo);
 	return (0);
 }
