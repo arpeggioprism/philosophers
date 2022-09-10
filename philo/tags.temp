@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+PHILO_H	philo.h	14;"	d
+all	philo.h	/^	struct s_philo	*all;$/;"	m	struct:s_thread	typeref:struct:s_thread::s_philo
+check_argv	check.c	/^int	check_argv(int ac, char **av)$/;"	f
+eat_flag	philo.h	/^	int				eat_flag;$/;"	m	struct:s_thread
+eat_shield	philo.h	/^	pthread_mutex_t	eat_shield;$/;"	m	struct:s_thread
+forks	philo.h	/^	pthread_mutex_t	*forks;$/;"	m	struct:s_philo
+ft_allocation	allocation.c	/^int	ft_allocation(t_philo *philo, char **av, int i)$/;"	f
+ft_atoi	check.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_free	free.c	/^int	ft_free(t_philo *philo)$/;"	f
+ft_free_error	free.c	/^int	ft_free_error(t_philo *philo, char *s, int i)$/;"	f
+ft_thread	threads.c	/^int	ft_thread(t_philo *philo)$/;"	f
+ft_usleep	allocation.c	/^void	ft_usleep(unsigned long time)$/;"	f
+func	threads.c	/^void	*func(void *ph)$/;"	f
+get_time	allocation.c	/^long long	get_time(void)$/;"	f
+i	philo.h	/^	int				i;$/;"	m	struct:s_thread
+judge	threads.c	/^void	*judge(t_philo *philo)$/;"	f
+lamp	philo.h	/^	int				lamp;$/;"	m	struct:s_philo
+main	philo.c	/^int	main(int ac, char **av)$/;"	f
+n_eat	philo.h	/^	int				n_eat;$/;"	m	struct:s_philo
+n_eat	philo.h	/^	int				n_eat;$/;"	m	struct:s_thread
+n_eat	threads.c	/^int	n_eat(int *eat_count, t_pthread *philo)$/;"	f
+n_philo	philo.h	/^	int				n_philo;$/;"	m	struct:s_philo
+out	allocation.c	/^void	out(t_pthread *philo, char *s, int lamp)$/;"	f
+philo	philo.h	/^	pthread_t		philo;$/;"	m	struct:s_thread
+philos	philo.h	/^	t_pthread		*philos;$/;"	m	struct:s_philo
+printf	philo.h	/^	pthread_mutex_t	printf;$/;"	m	struct:s_philo
+s_philo	philo.h	/^typedef struct s_philo$/;"	s
+s_thread	philo.h	/^typedef struct s_thread$/;"	s
+sets_fork	threads.c	/^void	sets_fork(t_pthread *philo, int x)$/;"	f
+t_die	philo.h	/^	int				t_die;$/;"	m	struct:s_philo
+t_eat	philo.h	/^	int				t_eat;$/;"	m	struct:s_philo
+t_philo	philo.h	/^}	t_philo;$/;"	t	typeref:struct:s_philo
+t_pthread	philo.h	/^}	t_pthread;$/;"	t	typeref:struct:s_thread
+t_sleep	philo.h	/^	int				t_sleep;$/;"	m	struct:s_philo
+time	philo.h	/^	long long		time;$/;"	m	struct:s_philo
+time	philo.h	/^	long long		time;$/;"	m	struct:s_thread
+time_shield	philo.h	/^	pthread_mutex_t	time_shield;$/;"	m	struct:s_thread
