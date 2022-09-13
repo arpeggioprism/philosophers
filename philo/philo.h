@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:34:17 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 23:33:33 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/13 21:50:33 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_philo
 
 int			ft_atoi(const char *str);
 int			check_argv(int ac, char **av);
-int			ft_allocation(t_philo *philo, char **av, int i);
+int			ft_allocation(t_philo *philo, char **av);
 int			ft_thread(t_philo *philo);
 int			ft_free(t_philo *pilo);
 int			ft_free_error(t_philo *philo, char *s, int i);

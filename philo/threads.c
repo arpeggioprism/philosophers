@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 19:29:41 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 23:33:50 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/11 03:47:28 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	*judge(t_philo *philo, int i, int eat_count)
 			pthread_mutex_lock(&philo->dead);
 			philo->is_dead = 1;
 			pthread_mutex_unlock(&philo->dead);
-			sleep(1);
+			usleep(1000000);
 			return (NULL);
 		}
 		pthread_mutex_unlock(&philo->philos[i].time_shield);
@@ -100,13 +100,11 @@ int	ft_thread(t_philo *philo)
 		if (pthread_create(&philo->philos[i].philo, NULL, func, \
 		&philo->philos[i]) != 0)
 		{
-			ft_free(philo);
 			write(2, "failed to pthread_create\n", 25);
 			return (1);
 		}
 		if (pthread_detach(philo->philos[i].philo) != 0)
 		{
-			ft_free(philo);
 			write(2, "failed to pthread_detach\n", 25);
 			return (1);
 		}
@@ -129,7 +127,7 @@ int	n_eat(int *eat_count, t_pthread *philo)
 		pthread_mutex_lock(&philo->all->dead);
 		philo->all->is_dead = 1;
 		pthread_mutex_unlock(&philo->all->dead);
-		sleep(1);
+		usleep(1000000);
 		return (0);
 	}
 	return (1);

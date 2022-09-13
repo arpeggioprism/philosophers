@@ -6,7 +6,7 @@
 /*   By: jshin <jshin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:48:57 by jshin             #+#    #+#             */
-/*   Updated: 2022/09/10 23:29:49 by jshin            ###   ########.fr       */
+/*   Updated: 2022/09/11 04:11:25 by jshin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_allocation_util(t_philo *philo)
 	return (0);
 }
 
-int	ft_allocation(t_philo *philo, char **av, int i)
+int	ft_allocation(t_philo *philo, char **av)
 {
 	philo->n_philo = ft_atoi(av[1]);
 	philo->t_die = ft_atoi(av[2]);
